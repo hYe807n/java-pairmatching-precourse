@@ -1,6 +1,6 @@
 package pairmatching.controller;
 
-import pairmatching.view.OutputView;
+import pairmatching.view.InputView;
 
 public class PairmatchingController {
 
@@ -9,6 +9,6 @@ public class PairmatchingController {
     }
 
     private void selectOption() {
-        OutputView.printMainOptions();
+        InputView.readOption();
     }
 }

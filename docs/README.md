@@ -14,7 +14,7 @@
 
 - [ ] 메인 기능 선택 기능
     - [X] 메인 기능 종류 출력 기능
-    - [ ] 메인 기능 종류 입력 기능
+    - [X] 메인 기능 종류 입력 기능
         - `camp.nextstep.edu.missionutils.Console`의 `readLine()`
     - 예외 처리
         - [ ] 잘못된 값 입력 시 예외 발생
