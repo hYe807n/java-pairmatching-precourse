@@ -1,18 +1,18 @@
 package pairmatching.enums;
 
 public enum Option {
-    MATCHING(1),
-    QUERY(2),
-    INITIALIZE(3),
-    EXIT(4);
+    MATCHING("1"),
+    QUERY("2"),
+    INITIALIZE("3"),
+    EXIT("Q");
 
-    private final int value;
+    private final String value;
 
-    Option(int value) {
+    Option(String value) {
         this.value = value;
     }
 
-    public int getValue() {
+    public String getValue() {
         return value;
     }
 }
