@@ -6,6 +6,11 @@ public class InputView {
 
     public static String readOption() {
         OutputView.printMainOptions();
-        return readLine();
+        return readLine().trim();
+    }
+
+    public static String readMatchingLevel() {
+        OutputView.printInform();
+        return readLine().trim();
     }
 }

@@ -1,5 +1,6 @@
 package pairmatching.controller;
 
+import pairmatching.enums.Option;
 import pairmatching.exception.Validation;
 import pairmatching.view.InputView;
 import pairmatching.view.OutputView;
@@ -8,6 +9,7 @@ public class PairmatchingController {
 
     public void run() {
         String answer = selectOption();
+        choiceOption(answer);
     }
 
     private String selectOption() {
@@ -19,5 +21,15 @@ public class PairmatchingController {
             selectOption();
         }
         return answer;
+    }
+
+    private void choiceOption(String answer) {
+        if (answer.equals(Option.MATCHING.getValue())) {
+            pairMatching();
+        }
+    }
+
+    private void pairMatching() {
+        InputView.readMatchingLevel();
     }
 }

@@ -12,4 +12,8 @@ public class OutputView {
     public static void printException(String message) {
         System.out.println(new StringJoiner("", Form.START_ERROR.getMessage(), message));
     }
+
+    public static void printInform() {
+        System.out.println(Form.INFORM.getMessage());
+    }
 }
