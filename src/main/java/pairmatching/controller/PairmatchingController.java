@@ -30,6 +30,12 @@ public class PairmatchingController {
     }
 
     private void pairMatching() {
-        InputView.readMatchingLevel();
+        String answer = InputView.readMatchingLevel();
+        try {
+            Validation.checkPairSelect(answer);
+        } catch (Exception exception) {
+            OutputView.printException(exception.getMessage());
+            pairMatching();
+        }
     }
 }
