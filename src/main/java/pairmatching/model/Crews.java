@@ -8,6 +8,8 @@ import pairmatching.enums.Course;
 
 public class Crews {
 
+    private static final int INDEX_OF_COURSE = 0;
+
     private final List<Crew> crews;
 
     public Crews() {
@@ -21,13 +23,24 @@ public class Crews {
         this.crews = crews;
     }
 
-    public List<Crew> getBackendCrews() {
+    public List<Crew> getCrewsOfCourse(String level) {
+        String course = level.split(",")[INDEX_OF_COURSE];
+        if (course.equals(Course.BACKEND.getName())) {
+            return backendCrews();
+        }
+        if (course.equals(Course.FRONTEND.getName())) {
+            return frontendCrews();
+        }
+        return null;
+    }
+
+    private List<Crew> backendCrews() {
         return crews.stream()
-            .filter( crew -> crew.isSameCourse(Course.BACKEND))
+            .filter(crew -> crew.isSameCourse(Course.BACKEND))
             .collect(Collectors.toList());
     }
 
-    public List<Crew> getFrontendCrews() {
+    private List<Crew> frontendCrews() {
         return crews.stream()
             .filter( crew -> crew.isSameCourse(Course.BACKEND))
             .collect(Collectors.toList());

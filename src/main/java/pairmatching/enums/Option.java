@@ -4,7 +4,9 @@ public enum Option {
     MATCHING("1"),
     QUERY("2"),
     INITIALIZE("3"),
-    EXIT("Q");
+    EXIT("Q"),
+    REMATCH("네"),
+    NO_REMATCH("아니오");
 
     private final String value;
 

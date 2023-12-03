@@ -13,4 +13,9 @@ public class InputView {
         OutputView.printInform();
         return readLine().trim();
     }
+
+    public static String readRematch() {
+        OutputView.printRematch();
+        return readLine().trim();
+    }
 }

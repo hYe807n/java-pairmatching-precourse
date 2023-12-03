@@ -2,12 +2,16 @@ package pairmatching.controller;
 
 import pairmatching.enums.Option;
 import pairmatching.exception.Validation;
+import pairmatching.model.Matcher;
 import pairmatching.view.InputView;
 import pairmatching.view.OutputView;
 
 public class PairmatchingController {
 
+    private Matcher matcher;
+
     public void run() {
+        this.matcher = new Matcher();
         String answer = selectOption();
         choiceOption(answer);
     }
@@ -32,10 +36,12 @@ public class PairmatchingController {
     private void pairMatching() {
         String answer = InputView.readMatchingLevel();
         try {
-            Validation.checkPairSelect(answer);
+            matcher.matchPairs(answer);
         } catch (Exception exception) {
             OutputView.printException(exception.getMessage());
             pairMatching();
         }
     }
+
+
 }

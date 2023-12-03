@@ -13,6 +13,10 @@ public class OutputView {
         System.out.println(new StringJoiner("", Form.START_ERROR.getMessage(), message));
     }
 
+    public static void printRematch() {
+        System.out.println(Form.REMATCH);
+    }
+
     public static void printInform() {
         System.out.println(Form.INFORM.getMessage());
     }
