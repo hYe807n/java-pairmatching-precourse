@@ -15,19 +15,20 @@ public class PairmatchingController {
     public void run() {
         this.matcher = new Matcher();
         String answer = "";
-        do {
+        while (!answer.equals(Option.EXIT.getValue())) {
             answer = selectOption();
             choiceOption(answer);
-        } while (answer.equals(Option.EXIT.getValue()));
+        }
     }
 
     private String selectOption() {
         String answer = InputView.readOption();
         try {
             Validation.checkOption(answer);
+            return answer;
         } catch (Exception exception) {
             OutputView.printException(exception.getMessage());
-            selectOption();
+            answer = selectOption();
         }
         return answer;
     }
