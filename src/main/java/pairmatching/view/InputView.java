@@ -10,7 +10,7 @@ public class InputView {
     }
 
     public static String readMatchingLevel() {
-        OutputView.printInform();
+        OutputView.printLevelSelect();
         return readLine().trim().replace(" ","");
     }
 

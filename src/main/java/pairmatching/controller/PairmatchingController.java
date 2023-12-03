@@ -35,40 +35,54 @@ public class PairmatchingController {
 
     private void choiceOption(String answer) {
         if (answer.equals(Option.MATCHING.getValue())) {
+            OutputView.printInform();
             pairMatching();
-        }
-        if (answer.equals(Option.EXIT.getValue())) {
-            return;
         }
     }
 
     private void pairMatching() {
         String answer = InputView.readMatchingLevel();
         try {
-            if (matcher.isDuplicatedLevel(answer)) {
-                pairRematch();
-            }
-            printPairsByLevel(answer);
+            checkPairRematch(answer);
         } catch (Exception exception) {
             OutputView.printException(exception.getMessage());
             pairMatching();
         }
     }
 
-    private void printPairsByLevel(String answer) {
+    private void checkPairRematch(String answer) {
+        if (matcher.isDuplicatedLevel(answer)) {
+            pairRematch(answer);
+        }
+        if (!matcher.isDuplicatedLevel(answer)) {
+            matchByLevel(answer);
+        }
+    }
+
+    private void matchByLevel(String answer) {
         List<Pair> pairs = matcher.matchPairs(answer).getPairs();
+        OutputView.printStartPairs();
         for (Pair pair : pairs) {
             OutputView.printPairsByCrew(pair.getCrews());
         }
     }
 
-    private void pairRematch() {
+    private void pairRematch(String level) {
         String rematch = InputView.readRematch();
-        Validation.checkRematchAnswer(rematch);
-        if (rematch.equals(Option.REMATCH.getValue())) {
-            return;
+        try {
+            Validation.checkRematchAnswer(rematch);
+            checkAnswerRematch(rematch, level);
+        } catch (Exception exception) {
+            OutputView.printException(exception.getMessage());
+            pairRematch(level);
         }
-        if (rematch.equals(Option.NO_REMATCH.getValue())) {
+    }
+
+    private void checkAnswerRematch(String answer, String level) {
+        if (answer.equals(Option.REMATCH.getValue())) {
+            matchByLevel(level);
+        }
+        if (answer.equals(Option.NO_REMATCH.getValue())) {
             pairMatching();
         }
     }

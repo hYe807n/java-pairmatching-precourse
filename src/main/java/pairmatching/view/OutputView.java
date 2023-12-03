@@ -21,11 +21,20 @@ public class OutputView {
     }
 
     public static void printInform() {
-        System.out.println(Form.INFORM.getMessage());
+        System.out.print(Form.INFORM.getMessage());
+    }
+
+    public static void printLevelSelect() {
+        System.out.println(Form.LEVEL_SELECT.getMessage());
+    }
+
+    public static void printStartPairs() {
+        System.out.println(Form.RESULT_MATCHING.getMessage());
     }
 
     public static void printPairsByCrew(List<Crew> crews) {
         System.out.println(crews.stream().map(Crew::getName).collect(
             Collectors.joining(" : ")));
     }
+
 }
