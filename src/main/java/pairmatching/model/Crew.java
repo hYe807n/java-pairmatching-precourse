@@ -2,7 +2,6 @@ package pairmatching.model;
 
 import java.util.List;
 import java.util.Map;
-import javafx.scene.layout.CornerRadii;
 import pairmatching.enums.Course;
 import pairmatching.enums.Level;
 
@@ -15,6 +14,10 @@ public class Crew {
     public Crew(Course course, String name) {
         this.course = course;
         this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public boolean isSameCourse(Course course) {

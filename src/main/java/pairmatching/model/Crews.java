@@ -42,7 +42,7 @@ public class Crews {
 
     private List<Crew> frontendCrews() {
         return crews.stream()
-            .filter( crew -> crew.isSameCourse(Course.BACKEND))
+            .filter( crew -> crew.isSameCourse(Course.FRONTEND))
             .collect(Collectors.toList());
     }
 }

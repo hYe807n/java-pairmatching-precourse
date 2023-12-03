@@ -1,5 +1,6 @@
 package pairmatching.model;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import pairmatching.exception.Validation;
 
@@ -12,6 +13,7 @@ public class Matcher {
 
     public Matcher() {
         crews = new Crews();
+        pairsResult = new LinkedHashMap<>();
     }
 
     public Pairs getPairsByLevel(String level) {

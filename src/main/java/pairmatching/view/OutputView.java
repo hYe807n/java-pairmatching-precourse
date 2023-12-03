@@ -2,6 +2,7 @@ package pairmatching.view;
 
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
 import pairmatching.enums.Form;
 import pairmatching.model.Crew;
 
@@ -24,6 +25,7 @@ public class OutputView {
     }
 
     public static void printPairsByCrew(List<Crew> crews) {
-        System.out.println(new StringJoiner(" : ","",""));
+        System.out.println(crews.stream().map(Crew::getName).collect(
+            Collectors.joining(" : ")));
     }
 }

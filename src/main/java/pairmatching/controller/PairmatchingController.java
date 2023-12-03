@@ -1,10 +1,10 @@
 package pairmatching.controller;
 
+import java.util.List;
 import pairmatching.enums.Option;
 import pairmatching.exception.Validation;
 import pairmatching.model.Matcher;
 import pairmatching.model.Pair;
-import pairmatching.model.Pairs;
 import pairmatching.view.InputView;
 import pairmatching.view.OutputView;
 
@@ -14,8 +14,11 @@ public class PairmatchingController {
 
     public void run() {
         this.matcher = new Matcher();
-        String answer = selectOption();
-        choiceOption(answer);
+        String answer = "";
+        do {
+            answer = selectOption();
+            choiceOption(answer);
+        } while (answer.equals(Option.EXIT.getValue()));
     }
 
     private String selectOption() {
@@ -33,6 +36,9 @@ public class PairmatchingController {
         if (answer.equals(Option.MATCHING.getValue())) {
             pairMatching();
         }
+        if (answer.equals(Option.EXIT.getValue())) {
+            return;
+        }
     }
 
     private void pairMatching() {
@@ -49,9 +55,10 @@ public class PairmatchingController {
     }
 
     private void printPairsByLevel(String answer) {
-        matcher.matchPairs(answer).getPairs().forEach(
-            pair -> OutputView.printPairsByCrew(pair.getCrews())
-        );
+        List<Pair> pairs = matcher.matchPairs(answer).getPairs();
+        for (Pair pair : pairs) {
+            OutputView.printPairsByCrew(pair.getCrews());
+        }
     }
 
     private void pairRematch() {

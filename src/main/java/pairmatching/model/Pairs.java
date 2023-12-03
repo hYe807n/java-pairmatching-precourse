@@ -24,13 +24,13 @@ public class Pairs {
         List<Crew> shuffledCrew = shuffle(crews);
         List<Pair> pairsOfCrews = new ArrayList<>();
         for (int i = 0; i < shuffledCrew.size() - 1; i += 2) {
-            pairsOfCrews.add(new Pair(pairOfCrews(crews, i)));
+            pairsOfCrews.add(new Pair(pairOfCrews(shuffledCrew, i)));
         }
         return pairsOfCrews;
     }
 
     private List<Crew> pairOfCrews(List<Crew> crews, int index) {
-        if (index - INDEX_OF_LAST_PAIR == crews.size()) {
+        if (index + INDEX_OF_LAST_PAIR == crews.size()) {
             return Arrays.asList(crews.get(index), crews.get(index + 1), crews.get(index + 2));
         }
         return Arrays.asList(crews.get(index), crews.get(index + 1));
