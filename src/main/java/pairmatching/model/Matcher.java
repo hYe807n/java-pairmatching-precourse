@@ -1,24 +1,26 @@
 package pairmatching.model;
 
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import pairmatching.exception.Validation;
 
 public class Matcher {
 
 
-    private static final Map<String, List<Pairs>> pairsResult = new LinkedHashMap<>();
+    private Map<String, Pairs> pairsResult;
 
     private final Crews crews;
 
     public Matcher() {
         crews = new Crews();
     }
+
+    public Pairs getPairsByLevel(String level) {
+        return pairsResult.get(level);
+    }
+
     public void matchPairs(String level) {
         Validation.checkPairSelect(level);
-        crews.getCrewsOfCourse(level);
-
+        pairsResult.put(level, new Pairs(crews.getCrewsOfCourse(level)));
     }
 
 }

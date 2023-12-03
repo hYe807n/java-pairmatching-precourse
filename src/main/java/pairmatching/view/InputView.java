@@ -11,7 +11,7 @@ public class InputView {
 
     public static String readMatchingLevel() {
         OutputView.printInform();
-        return readLine().trim();
+        return readLine().trim().replace(" ","");
     }
 
     public static String readRematch() {
