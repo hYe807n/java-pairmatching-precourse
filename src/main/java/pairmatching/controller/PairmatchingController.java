@@ -36,6 +36,9 @@ public class PairmatchingController {
     private void pairMatching() {
         String answer = InputView.readMatchingLevel();
         try {
+            if (matcher.isDuplicatedLevel(answer)) {
+                pairRematch();
+            }
             matcher.matchPairs(answer);
         } catch (Exception exception) {
             OutputView.printException(exception.getMessage());
@@ -43,5 +46,13 @@ public class PairmatchingController {
         }
     }
 
-
+    private void pairRematch() {
+        String rematch = InputView.readRematch();
+        if (rematch.equals(Option.REMATCH.getValue())) {
+            return;
+        }
+        if (rematch.equals(Option.NO_REMATCH.getValue())) {
+            pairMatching();
+        }
+    }
 }

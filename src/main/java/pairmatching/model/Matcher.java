@@ -23,4 +23,7 @@ public class Matcher {
         pairsResult.put(level, new Pairs(crews.getCrewsOfCourse(level)));
     }
 
+    public boolean isDuplicatedLevel(String level) {
+        return pairsResult.containsKey(level);
+    }
 }

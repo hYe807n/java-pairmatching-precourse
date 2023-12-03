@@ -48,4 +48,11 @@ public class Validation {
             throw new IllegalArgumentException("존재하지 않는 미션입니다.");
         }
     }
+
+    public static void checkRematchAnswer(String userAnswer) {
+        if (!(userAnswer.equals(Option.REMATCH.getValue())
+            || userAnswer.equals(Option.NO_REMATCH.getValue()))) {
+            throw new IllegalArgumentException("예 | 아니오 중에 입력해주세요.");
+        }
+    }
 }
