@@ -17,7 +17,7 @@ public class OutputView {
     }
 
     public static void printRematch() {
-        System.out.println(Form.REMATCH);
+        System.out.println(Form.REMATCH.getMessage());
     }
 
     public static void printInform() {
