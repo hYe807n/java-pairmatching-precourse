@@ -48,6 +48,7 @@ public class PairmatchingController {
 
     private void pairRematch() {
         String rematch = InputView.readRematch();
+        Validation.checkRematchAnswer(rematch);
         if (rematch.equals(Option.REMATCH.getValue())) {
             return;
         }
