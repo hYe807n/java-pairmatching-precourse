@@ -18,9 +18,10 @@ public class Matcher {
         return pairsResult.get(level);
     }
 
-    public void matchPairs(String level) {
+    public Pairs matchPairs(String level) {
         Validation.checkPairSelect(level);
         pairsResult.put(level, new Pairs(crews.getCrewsOfCourse(level)));
+        return pairsResult.get(level);
     }
 
     public boolean isDuplicatedLevel(String level) {

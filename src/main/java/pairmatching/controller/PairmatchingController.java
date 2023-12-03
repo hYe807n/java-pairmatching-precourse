@@ -3,6 +3,8 @@ package pairmatching.controller;
 import pairmatching.enums.Option;
 import pairmatching.exception.Validation;
 import pairmatching.model.Matcher;
+import pairmatching.model.Pair;
+import pairmatching.model.Pairs;
 import pairmatching.view.InputView;
 import pairmatching.view.OutputView;
 
@@ -39,11 +41,17 @@ public class PairmatchingController {
             if (matcher.isDuplicatedLevel(answer)) {
                 pairRematch();
             }
-            matcher.matchPairs(answer);
+            printPairsByLevel(answer);
         } catch (Exception exception) {
             OutputView.printException(exception.getMessage());
             pairMatching();
         }
+    }
+
+    private void printPairsByLevel(String answer) {
+        matcher.matchPairs(answer).getPairs().forEach(
+            pair -> OutputView.printPairsByCrew(pair.getCrews())
+        );
     }
 
     private void pairRematch() {
