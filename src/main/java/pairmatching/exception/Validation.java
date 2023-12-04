@@ -37,6 +37,7 @@ public class Validation {
         }
     }
 
+
     public static void checkPairSelect(String inform) {
         List<String> userAnswer = Arrays.asList((inform.split(",")));
         checkCourse(userAnswer.get(INDEX_COURSE));

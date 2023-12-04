@@ -10,9 +10,7 @@ import pairmatching.exception.Validation;
 
 public class Matcher {
 
-
-    private Map<String, Pairs> pairsResult;
-
+    private final Map<String, Pairs> pairsResult;
     private final Crews crews;
 
     public Matcher() {
@@ -21,7 +19,14 @@ public class Matcher {
     }
 
     public Pairs getPairsByLevel(String level) {
+        checkPairRecord(level);
         return pairsResult.get(level);
+    }
+
+    private void checkPairRecord(String level) {
+        if (!pairsResult.containsKey(level)) {
+            throw new IllegalArgumentException("매칭 이력이 없습니다.");
+        }
     }
 
     public Pairs matchPairs(String level) {
@@ -31,7 +36,7 @@ public class Matcher {
         return pairsResult.get(level);
     }
 
-    private List<Crew> stringToCrews(List<String> crewsName){
+    private List<Crew> stringToCrews(List<String> crewsName) {
         return crewsName.stream().map(this.crews::findCrewByName).collect(Collectors.toList());
     }
 
