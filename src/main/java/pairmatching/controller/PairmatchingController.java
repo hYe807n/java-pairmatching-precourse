@@ -42,7 +42,12 @@ public class PairmatchingController {
         }
         if (answer.equals(Option.QUERY.getValue())) {
             OutputView.printInform();
+            viewPair();
         }
+    }
+
+    private void viewPair() {
+        String answer = InputView.readMatchingLevel();
     }
 
     private void pairMatching() {
