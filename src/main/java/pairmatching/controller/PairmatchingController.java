@@ -48,6 +48,18 @@ public class PairmatchingController {
 
     private void viewPair() {
         String answer = InputView.readMatchingLevel();
+        try {
+            findPairByLevel(answer);
+        } catch (Exception exception) {
+            OutputView.printException(exception.getMessage());
+            viewPair();
+        }
+    }
+
+    private void findPairByLevel(String level) {
+        Validation.checkPairSelect(level);
+        List<Pair> pairs = matcher.getPairsByLevel(level).getPairs();
+        printPairs(pairs);
     }
 
     private void pairMatching() {
@@ -80,6 +92,10 @@ public class PairmatchingController {
 
     private void matchByLevel(String answer) {
         List<Pair> pairs = matcher.matchPairs(answer).getPairs();
+        printPairs(pairs);
+    }
+
+    private void printPairs(List<Pair> pairs) {
         OutputView.printStartPairs();
         for (Pair pair : pairs) {
             OutputView.printPairsByCrew(pair.getCrews());
