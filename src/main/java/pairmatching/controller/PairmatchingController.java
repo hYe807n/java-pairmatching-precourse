@@ -10,6 +10,8 @@ import pairmatching.view.OutputView;
 
 public class PairmatchingController {
 
+    private static final int COUNT_MATCH_FIRST = 0;
+
     private Matcher matcher;
 
     public void run() {
@@ -55,7 +57,16 @@ public class PairmatchingController {
             pairRematch(answer);
         }
         if (!matcher.isDuplicatedLevel(answer)) {
+            checkMatchRetry(answer, COUNT_MATCH_FIRST);
+        }
+    }
+
+    private void checkMatchRetry(String answer, int count) {
+        try {
             matchByLevel(answer);
+        } catch (Exception exception) {
+            Validation.checkRetryCount(count);
+            checkMatchRetry(answer, count + 1);
         }
     }
 
@@ -80,7 +91,7 @@ public class PairmatchingController {
 
     private void checkAnswerRematch(String answer, String level) {
         if (answer.equals(Option.REMATCH.getValue())) {
-            matchByLevel(level);
+            checkMatchRetry(level, COUNT_MATCH_FIRST);
         }
         if (answer.equals(Option.NO_REMATCH.getValue())) {
             pairMatching();

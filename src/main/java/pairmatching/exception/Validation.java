@@ -24,6 +24,11 @@ public class Validation {
         }
     }
 
+    public static void checkRetryCount(int count) {
+        if (count >= 2) {
+            throw new IllegalArgumentException("재매치 시도가 3 번 실패하였습니다");
+        }
+    }
 
     public static void checkOption(String userAnswer) {
         if (Arrays.stream(Option.values()).noneMatch(
