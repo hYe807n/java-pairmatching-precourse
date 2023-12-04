@@ -40,6 +40,9 @@ public class PairmatchingController {
             OutputView.printInform();
             pairMatching();
         }
+        if (answer.equals(Option.QUERY.getValue())) {
+            OutputView.printInform();
+        }
     }
 
     private void pairMatching() {
