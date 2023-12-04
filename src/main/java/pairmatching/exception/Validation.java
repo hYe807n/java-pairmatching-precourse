@@ -2,16 +2,27 @@ package pairmatching.exception;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import pairmatching.enums.Course;
 import pairmatching.enums.Level;
 import pairmatching.enums.Mission;
 import pairmatching.enums.Option;
+import pairmatching.model.Crew;
 
 public class Validation {
 
     private static final int INDEX_COURSE = 0;
     private static final int INDEX_LEVEL = 1;
     private static final int INDEX_MISSION = 2;
+
+    public static void checkPairs(Level level, List<Crew> crews) {
+        if (crews.stream().anyMatch(myCrew ->
+            myCrew.isPreviousPair(level,
+                crews.stream().filter(crew -> !crew.isSameName(myCrew.getName()))
+                    .collect(Collectors.toList())))) {
+            throw new IllegalArgumentException();
+        }
+    }
 
 
     public static void checkOption(String userAnswer) {

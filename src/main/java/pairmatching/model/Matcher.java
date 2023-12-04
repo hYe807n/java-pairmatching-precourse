@@ -26,10 +26,8 @@ public class Matcher {
 
     public Pairs matchPairs(String level) {
         Validation.checkPairSelect(level);
-
         List<String> shuffledCrew = shuffle(crewsToString(crews.getCrewsOfCourse(level)));
-
-        pairsResult.put(level, new Pairs(stringToCrews(shuffledCrew)));
+        pairsResult.put(level, new Pairs(level, stringToCrews(shuffledCrew)));
         return pairsResult.get(level);
     }
 
