@@ -44,6 +44,14 @@ public class PairmatchingController {
             OutputView.printInform();
             viewPair();
         }
+        if (answer.equals(Option.INITIALIZE.getValue())) {
+            initializePair();
+        }
+    }
+
+    private void initializePair() {
+        OutputView.printInitialize();
+        this.matcher = new Matcher();
     }
 
     private void viewPair() {

@@ -37,4 +37,7 @@ public class OutputView {
             Collectors.joining(" : ")));
     }
 
+    public static void printInitialize() {
+        System.out.println(Form.PAIR_INITIALIZE.getMessage());
+    }
 }
