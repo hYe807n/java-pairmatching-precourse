@@ -5,6 +5,8 @@ import static camp.nextstep.edu.missionutils.Randoms.shuffle;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Pairs {
 
@@ -21,10 +23,9 @@ public class Pairs {
     }
 
     private List<Pair> pairsOfCrews(List<Crew> crews) {
-        List<Crew> shuffledCrew = shuffle(crews);
         List<Pair> pairsOfCrews = new ArrayList<>();
-        for (int i = 0; i < shuffledCrew.size() - 1; i += 2) {
-            pairsOfCrews.add(new Pair(pairOfCrews(shuffledCrew, i)));
+        for (int i = 0; i < crews.size() - 1; i += 2) {
+            pairsOfCrews.add(new Pair(pairOfCrews(crews, i)));
         }
         return pairsOfCrews;
     }

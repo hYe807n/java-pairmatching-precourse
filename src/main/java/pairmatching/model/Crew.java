@@ -16,12 +16,17 @@ public class Crew {
         this.name = name;
     }
 
+
     public String getName() {
         return this.name;
     }
 
     public boolean isSameCourse(Course course) {
         return this.course.equals(course);
+    }
+
+    public boolean isSameName(String name) {
+        return this.name.equals(name);
     }
 
     public boolean isPreviousPair(Level level, Crew crew) {

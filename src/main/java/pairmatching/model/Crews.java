@@ -23,6 +23,10 @@ public class Crews {
         this.crews = crews;
     }
 
+    public Crew findCrewByName(String name) {
+        return crews.stream().filter( crew -> crew.isSameName(name)).findFirst().orElse(null);
+    }
+
     public List<Crew> getCrewsOfCourse(String level) {
         String course = level.split(",")[INDEX_OF_COURSE];
         if (course.equals(Course.BACKEND.getName())) {
