@@ -14,7 +14,10 @@ class FileLoaderTest {
         Assertions.assertTrue(crews.contains("백호"));
     }
 
+    @DisplayName("./resources/frontend-crew.md 파일에서 프론트엔드 크루 이름 불러오기")
     @Test
-    void loadFrontendFile() {
+     void loadFrontendFile() {
+        List<String> crews = FileLoader.loadFrontend();
+        Assertions.assertTrue(crews.contains("다비"));
     }
 }
