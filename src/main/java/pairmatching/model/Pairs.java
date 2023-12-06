@@ -1,13 +1,8 @@
 package pairmatching.model;
 
-import static camp.nextstep.edu.missionutils.Randoms.shuffle;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Pairs {
 
@@ -36,11 +31,5 @@ public class Pairs {
             return Arrays.asList(crews.get(index), crews.get(index + 1), crews.get(index + 2));
         }
         return Arrays.asList(crews.get(index), crews.get(index + 1));
-    }
-
-    private List<Crew> exceptSelfInPair(Crew crew) {
-        Pair myPair = pairs.stream().filter(pair -> pair.getCrews().contains(crew)).findFirst().get();
-        return myPair.getCrews().stream().filter(crews -> !crews.isSameName(crew.getName()))
-            .collect(Collectors.toList());
     }
 }
