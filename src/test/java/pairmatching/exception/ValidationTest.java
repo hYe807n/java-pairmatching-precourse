@@ -47,4 +47,11 @@ class ValidationTest {
         Assertions.assertThrows(IllegalArgumentException.class, () ->
             Validation.checkPairSelect(level));
     }
+
+    @DisplayName("메인 화면에서 1,2,3,Q 외의 10 값을 입력 시 예외 발생")
+    @Test
+    void validateCheckOption() {
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+            Validation.checkOption("10"));
+    }
 }
