@@ -16,6 +16,13 @@ class CrewTest {
         );
     }
 
+    private static Stream<Arguments> compareName() {
+        return Stream.of(
+            Arguments.arguments("하연", true, ""),
+            Arguments.arguments("연하", false, "불")
+        );
+    }
+
     public static Crew initializeCrew() {
         return new Crew(Course.BACKEND, "하연");
     }
@@ -24,5 +31,11 @@ class CrewTest {
     @MethodSource("compareCourse")
     void isSameCourse(Course course, String courseName, boolean value) {
         Assertions.assertEquals(initializeCrew().isSameCourse(course), value);
+    }
+
+    @ParameterizedTest(name = "{0} 크루와 이름이 {2}일치하면 {1} 반환")
+    @MethodSource("compareName")
+    void isSameName(String name, boolean value, String result) {
+        Assertions.assertEquals(initializeCrew().isSameName(name), value);
     }
 }
