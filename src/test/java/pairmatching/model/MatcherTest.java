@@ -29,4 +29,12 @@ class MatcherTest {
         matcher.matchPairs("백엔드,레벨1,자동차경주");
         Assertions.assertTrue(matcher.isDuplicatedLevel("백엔드,레벨1,자동차경주"));
     }
+
+    @DisplayName("매칭 이력이 있는 레벨이라면, false 반환")
+    @Test
+    void isNotMatched() {
+        Matcher matcher = new Matcher();
+        matcher.matchPairs("백엔드,레벨1,자동차경주");
+        Assertions.assertFalse(matcher.isDuplicatedLevel("프론트엔드,레벨1,자동차경주"));
+    }
 }
