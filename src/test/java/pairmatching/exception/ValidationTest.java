@@ -54,4 +54,11 @@ class ValidationTest {
         Assertions.assertThrows(IllegalArgumentException.class, () ->
             Validation.checkOption("10"));
     }
+
+    @DisplayName("재매칭 여부 답변에 예/아니요 외의 답변 입력 시 예외 발생")
+    @Test
+    void validateRematchAnswer() {
+        Assertions.assertThrows(IllegalArgumentException.class, () ->
+            Validation.checkRematchAnswer("배고파요"));
+    }
 }
